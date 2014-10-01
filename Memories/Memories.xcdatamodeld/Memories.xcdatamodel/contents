@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Account" representedClassName="Account" syncable="YES">
+        <attribute name="accountName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profileURL" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="memories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Memory" inverseName="account" inverseEntity="Memory" syncable="YES"/>
+        <relationship name="trips" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trip" inverseName="account" inverseEntity="Trip" syncable="YES"/>
+    </entity>
+    <entity name="Memory" representedClassName="Memory" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lattitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longtitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="memoryURL" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="memories" inverseEntity="Account" syncable="YES"/>
+        <relationship name="trip" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trip" inverseName="memories" inverseEntity="Trip" syncable="YES"/>
+    </entity>
+    <entity name="Trip" representedClassName="Trip" syncable="YES">
+        <attribute name="tripDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tripEndDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tripName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tripProfileURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tripStartDate" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="trips" inverseEntity="Account" syncable="YES"/>
+        <relationship name="memories" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Memory" inverseName="trip" inverseEntity="Memory" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Account" positionX="-36" positionY="54" width="128" height="105"/>
+        <element name="Memory" positionX="-54" positionY="36" width="128" height="133"/>
+        <element name="Trip" positionX="-63" positionY="-18" width="128" height="148"/>
+    </elements>
+</model>
